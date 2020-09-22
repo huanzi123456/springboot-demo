@@ -1,14 +1,17 @@
 package com.example.uploadingfiles.storage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
-@ConfigurationProperties("storage")
+//@ConfigurationProperties("storage")
+@Component
 public class StorageProperties {
 
 	/**
 	 * Folder location for storing files
 	 */
-	private String location = "upload-dir";
+	private String location = "C:\\springBoot-soruce\\html";
 
 	public String getLocation() {
 		return location;
