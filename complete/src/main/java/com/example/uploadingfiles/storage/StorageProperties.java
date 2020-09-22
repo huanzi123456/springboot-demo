@@ -2,6 +2,10 @@ package com.example.uploadingfiles.storage;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+/**
+ * storage location
+ * U can config location of upload files in the application.yml
+ */
 @ConfigurationProperties("storage")
 public class StorageProperties {
 

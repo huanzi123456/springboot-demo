@@ -20,7 +20,17 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class FileSystemStorageService implements StorageService {
 
+
+	/**
+	 *
+	 * @deprecated Path 2 File ,File 2 URI
+	 * operate Files
+	 * {@link Files,Paths}
+	 * @since 1.7
+	 * @see "https://www.cnblogs.com/ixenos/p/5851976.html"
+	 */
 	private final Path rootLocation;
+
 
 	@Autowired
 	public FileSystemStorageService(StorageProperties properties) {
@@ -29,7 +39,8 @@ public class FileSystemStorageService implements StorageService {
 
 	@Override
 	public void store(MultipartFile file) {
-		String filename = StringUtils.cleanPath(file.getOriginalFilename());
+		String originalFilename = file.getOriginalFilename();
+		String filename = StringUtils.cleanPath(originalFilename);
 		try {
 			if (file.isEmpty()) {
 				throw new StorageException("Failed to store empty file " + filename);
@@ -79,7 +90,6 @@ public class FileSystemStorageService implements StorageService {
 			else {
 				throw new StorageFileNotFoundException(
 						"Could not read file: " + filename);
-
 			}
 		}
 		catch (MalformedURLException e) {
